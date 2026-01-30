@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gerencia_Movil.Pages.UsuarioDetalle"
+             Title="UsuarioDetalle">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button Text="Cerrar modal" Clicked="Button_Clicked"/>
+
+        <Label 
+            Text="Información del usuario"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Image 
+            Source="usuario.png"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            HeightRequest="100"
+            WidthRequest="100"/>
+        <Label 
+            Text="Nombre: Juan Pérez"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label
+            Text="Técnico de telecomunicaciones"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="Clave de empleado: 12345"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

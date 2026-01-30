@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Gerencia_Movil/Gerencia_Movil.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

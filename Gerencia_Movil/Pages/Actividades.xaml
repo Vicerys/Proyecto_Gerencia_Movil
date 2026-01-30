@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gerencia_Movil.Pages.Actividades"
+             Title="Actividades">
+    <VerticalStackLayout>
+        <Label 
+            Text="Actividades pendientes"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ImageButton 
+            Source="usuario.png"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            HeightRequest="100"
+            WidthRequest="100"
+            Clicked="Button_UsuarioDetalle"/>
+        <CheckBox
+            x:Name="CheckBoxActividad1"
+            Content="Actividad 1: Revisar equipo A"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <CheckBox
+        x:Name="CheckBoxActividad1"
+        Content="Actividad 2: Revisar equipo B"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"/>
+        <CheckBox
+        x:Name="CheckBoxActividad1"
+        Content="Actividad 3: Revisar equipo C"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+</ContentPage>
