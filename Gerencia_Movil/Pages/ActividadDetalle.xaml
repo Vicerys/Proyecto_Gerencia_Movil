@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gerencia_Movil.Pages.ActividadDetalle"
+             Title="ActividadDetalle">
+    <VerticalStackLayout>
+        <Label 
+            Text="Detalles de la actividad"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+        Text="Descripción"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <Label 
+        Text="fecha límite "
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <Label 
+        Text="Sub-tareas"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <Label 
+        Text="Ubicación"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <Label 
+        Text="Ubicación"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <Label 
+        Text="Dispositivos necesarios"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+        <Button Text="Cerrar modal" 
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Clicked="Button_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

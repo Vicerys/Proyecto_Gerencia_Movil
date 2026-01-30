@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gerencia_Movil.Pages.Actividades"
+             Title="Actividades">
+    <VerticalStackLayout>
+        <Label 
+            Text="Actividades pendientes"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ImageButton 
+            Source="circulo_de_usuario.png"
+            VerticalOptions="Start" 
+            HorizontalOptions="End" 
+            HeightRequest="010"
+            WidthRequest="010"
+            Clicked="Button_UsuarioDetalle"/>
+
+        <CollectionView x:Name="TareasCollectionView"
+            ItemsSource="{Binding Tareas}"
+            SelectionMode="Single">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        
+                        <Label 
+                        Text="{Binding Nombre}"
+                        FontSize="16"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                        
+                        <ImageButton 
+                        Source="mas_detalle.png"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="End" 
+                        HeightRequest="10"
+                        WidthRequest="10"
+                        Clicked="Button_DetallesdeActividad"/>
+                        
+                        <Button
+                        Text="Marcar como completada"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Clicked="Button_Completar"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gerencia_Movil.Pages.Dispositivos"
+             Title="Dispositivos">
+    <ScrollView>
+    <VerticalStackLayout Padding="50,0,50,0">
+        
+        <ImageButton 
+            Source="circulo_de_usuario.png"
+            VerticalOptions="Start" 
+            HorizontalOptions="End" 
+            HeightRequest="10"
+            WidthRequest="10"
+            Clicked="Button_UsuarioDetalle"/>
+
+        <Label 
+            Text="Dispositivos en uso por ti"
+            FontSize="18"
+            Padding="0,20,0,20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <CollectionView x:Name="EquiposUsadosCollectionView"
+                ItemsSource="{Binding Equipos}"
+                SelectionMode="None">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout Padding="10" Spacing="20">
+                        <!-- Imagen del dispositivo -->
+                        <Image Source="dispositivos.png"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       HeightRequest="200"
+                       WidthRequest="200"/>
+
+                        <!-- Información del dispositivo -->
+                        <VerticalStackLayout VerticalOptions="Center" Spacing="5">
+                            <!-- Nombre del dispositivo -->
+                            <Label Text="{Binding Nombre}" 
+                           FontSize="16" 
+                           FontAttributes="Bold"
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center"/>
+                            
+                            <!-- Especificaciones -->
+                            <Label Text="{Binding EspecificacionesTecnicas}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+                            
+                            <!-- Disponibilidad -->
+                            <Label Text="{Binding DisponibilidadId}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                            <!-- Botón de acción -->
+                            <Button Text="Liberar"
+                            VerticalOptions="End"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=LiberarCommand}"
+                            CommandParameter="{Binding}" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            Text="Dispositivos disponibles utiles para tus actividades"
+            FontSize="18"
+            Padding="0,20,0,20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <Label
+        Text="Selecciona los dispositivos que deseas solicitar"
+        FontSize="14"
+        Padding="0,20,0,20"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+            <CollectionView x:Name="EquiposDisponiblesCollectionView"
+                ItemsSource="{Binding Equipos}"
+                SelectionMode="Multiple">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Información del dispositivo -->
+                        <VerticalStackLayout VerticalOptions="Center" Spacing="5">
+                            <!-- Nombre del dispositivo -->
+                            <Label Text="{Binding Nombre}" 
+                                   FontSize="16" 
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center"/>
+
+                            <!-- Especificaciones -->
+                            <Label Text="{Binding EspecificacionesTecnicas}"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        <Label
+        Text="Sistema de apartado"
+        FontSize="18"
+        Padding="0,20,0,20"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+        <HorizontalStackLayout>
+            <Label
+            Text="Hora de finalización: "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <TimePicker
+            x:Name="TimePickerApartado"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Format="HH:mm"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <CheckBox
+            x:Name="CheckBoxFullDay"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <Label
+            Text="Todo el día"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
+        
+        <HorizontalStackLayout>
+        <CheckBox
+            x:Name="CheckBoxConfirmacion"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <Label
+            Text="Acepto los terminos y condiciones"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
+        
+        <Button Text="Solicitar" Clicked="Button_SolicitarDispositivos"/>
+
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
