@@ -31,12 +31,12 @@
                         <Label 
                         Text="{Binding Nombre}"
                         FontSize="16"
-                        VerticalOptions="Center" 
+            VerticalOptions="Center"
                         HorizontalOptions="Center" />
                         
                         <ImageButton 
                         Source="mas_detalle.png"
-                        VerticalOptions="Center" 
+        VerticalOptions="Center"
                         HorizontalOptions="End" 
                         HeightRequest="10"
                         WidthRequest="10"
@@ -44,7 +44,7 @@
                         
                         <Button
                         Text="Marcar como completada"
-                        VerticalOptions="Center"
+        VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Clicked="Button_Completar"/>
                     </HorizontalStackLayout>
@@ -52,6 +52,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        
+
     </VerticalStackLayout>
 </ContentPage>

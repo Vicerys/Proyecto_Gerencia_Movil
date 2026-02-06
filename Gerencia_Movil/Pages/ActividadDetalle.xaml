@@ -30,8 +30,8 @@
         HorizontalOptions="Center" />
         <Label 
         Text="Dispositivos necesarios"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
 
         <Button Text="Cerrar modal" 
             VerticalOptions="End"

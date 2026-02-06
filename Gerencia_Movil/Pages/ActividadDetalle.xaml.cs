@@ -26,5 +26,5 @@ public partial class ActividadDetalle : ContentPage
         LabelFechaInicio.Text = tarea.FechaInicio.ToString();
         LabelFechaFin.Text = tarea.FechaFin.ToString();
         LabelEstado.Text = tarea.EstadoId.ToString();*/
-    }
+	}
 }

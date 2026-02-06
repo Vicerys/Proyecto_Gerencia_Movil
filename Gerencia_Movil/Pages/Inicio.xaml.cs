@@ -9,7 +9,7 @@ public partial class Inicio : ContentPage
 	{
 		InitializeComponent();
         _Servicio = servicio;
-    }
+	}
 
     private async void Button_Clicked(object sender, EventArgs e)
     {

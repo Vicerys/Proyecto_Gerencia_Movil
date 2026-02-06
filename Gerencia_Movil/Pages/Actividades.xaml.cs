@@ -12,7 +12,7 @@ public partial class Actividades : ContentPage
 		InitializeComponent();
         _Servicio = servicio;
         WebServices();
-    }
+	}
     private async void Button_UsuarioDetalle(object sender, EventArgs e)
     {
         await Navigation.PushModalAsync(new UsuarioDetalle(_Servicio));

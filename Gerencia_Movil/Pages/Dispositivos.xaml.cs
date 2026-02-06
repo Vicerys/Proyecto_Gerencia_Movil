@@ -8,8 +8,8 @@ public partial class Dispositivos : ContentPage
     Servicio _servicio;
     private List<EquipoDto> equipos;
     public Dispositivos(Servicio servicio)
-    {
-        InitializeComponent();
+	{
+		InitializeComponent();
         _servicio = servicio;
         WebServices();
     }
@@ -17,7 +17,7 @@ public partial class Dispositivos : ContentPage
     private async void Button_UsuarioDetalle(object sender, EventArgs e)
     {
         await Navigation.PushModalAsync(new UsuarioDetalle(_servicio));
-    }
+	}
 
     private async void Button_SolicitarDispositivos(object sender, EventArgs e)
     {

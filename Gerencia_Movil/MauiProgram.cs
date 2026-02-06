@@ -27,7 +27,7 @@ namespace Gerencia_Movil
                 builder.Services.AddSingleton<TareaEquipoService>();
                 builder.Services.AddSingleton<TareaService>();
                 builder.Services.AddSingleton<InicioSesionService>();
-    
+
                 builder.Services.AddSingleton<Servicio>();
 
             builder.Services.AddSingleton<MainPage>();

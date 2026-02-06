@@ -119,7 +119,7 @@
         HorizontalOptions="Center" />
 
         <HorizontalStackLayout>
-            <Label
+        <Label 
             Text="Hora de finalización: "
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

@@ -12,7 +12,7 @@ public partial class UsuarioDetalle : ContentPage
         _service = service;
         WebServices();
 
-    }
+	}
     private void Button_Clicked(object sender, EventArgs e)
     {
         Navigation.PopModalAsync();
