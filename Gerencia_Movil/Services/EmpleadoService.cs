@@ -7,10 +7,10 @@ namespace Gerencia_Movil.Services
 {
     public class EmpleadoService
     {
-        public async Task<EmpleadoDto> ObtenerEmpleado()
-        { 
+        public async Task<EmpleadoDto> ObtenerEmpleado(int idEmpleado)
+        {
             var client = new HttpClient();
-            var url = "http://localhost:5110/api/Empleado";
+            var url = $"http://localhost:5110/api/Empleado/{idEmpleado}";
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             request.Headers.Add("accept", "*/*");
             var response = await client.SendAsync(request);

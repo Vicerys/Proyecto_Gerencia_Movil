@@ -1,37 +1,91 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gerencia_Movil.Pages.Login"
-             Title="Login">
+             BackgroundColor="{StaticResource BackgroundColor}"
+             NavigationPage.HasNavigationBar="False">
 
-    <ScrollView>
-        <VerticalStackLayout
-        Padding="30,0"
-        Spacing="25">
-            <Image
-            Source="dotnet_bot.png"
-            HeightRequest="185"
-            Aspect="AspectFit"
-            SemanticProperties.Description="dot net bot in a submarine number ten" />
+    <Grid>
 
-            <Label
-            Text="Usuario" />
-            <Entry 
-            x:Name="EntryUsuario"
-            Placeholder="Ingrese su usuario" />
+        <!-- Fondo superior decorativo -->
+        <BoxView BackgroundColor="{StaticResource PrimaryColor}"
+                 HeightRequest="250"
+                 VerticalOptions="Start"/>
 
-            <Label
-            Text="Contraseña" />
-            <Entry 
-            x:Name="EntryContrasena"
-            Placeholder="Ingrese su contraseña"
-            IsPassword="True" />
+        <ScrollView>
+            <VerticalStackLayout Padding="30"
+                                 Spacing="25"
+                                 VerticalOptions="Center">
 
-            <Button
-            x:Name="LoginBtn"
-            Text="Click me" 
-            Clicked="ButtonIniciarSesion_Clicked" />
-        </VerticalStackLayout>
-    </ScrollView>
-    
+                <!-- Logo o nombre empresa -->
+                <VerticalStackLayout Spacing="5"
+                                     Margin="0,80,0,20">
+
+                    <Label Text="Gerencia Movil"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="White"/>
+
+                    <Label Text="Sistema de gestión interna"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           TextColor="White"/>
+                </VerticalStackLayout>
+
+                <!-- Tarjeta Login -->
+                <Frame BackgroundColor="{StaticResource CardColor}"
+                       CornerRadius="15"
+                       HasShadow="True"
+                       Padding="25">
+
+                    <VerticalStackLayout Spacing="20">
+
+                        <Label Text="Iniciar sesión"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}"/>
+
+                        <!-- Usuario -->
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Usuario"
+                                   FontSize="13"
+                                   TextColor="Gray"/>
+                            <Entry x:Name="EntryUsuario"
+                                   Placeholder="Ingrese su usuario"
+                                   BackgroundColor="#F3F4F6"
+                                   TextColor="{StaticResource PrimaryColor}"
+                                   HeightRequest="45"
+                                   Margin="0"
+                                   />
+                        </VerticalStackLayout>
+
+                        <!-- Contraseña -->
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Contraseña"
+                                   FontSize="13"
+                                   TextColor="Gray"/>
+                            <Entry x:Name="EntryContrasena"
+                                   Placeholder="Ingrese su contraseña"
+                                   IsPassword="True"
+                                   BackgroundColor="#F3F4F6"
+                                   TextColor="{StaticResource PrimaryColor}"
+                                   HeightRequest="45"/>
+                        </VerticalStackLayout>
+
+                        <!-- Botón -->
+                        <Button x:Name="LoginBtn"
+                                Text="Iniciar sesión"
+                                Style="{StaticResource PrimaryButton}"
+                                HeightRequest="45"
+                                Clicked="ButtonIniciarSesion_Clicked"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
 </ContentPage>

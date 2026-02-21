@@ -1,5 +1,6 @@
-using Gerencia_Movil.Dtos;
+using Gerencia.Core.Dtos;
 using Gerencia_Movil.Services;
+using System.Diagnostics;
 
 namespace Gerencia_Movil.Pages;
 
@@ -19,18 +20,30 @@ public partial class Dispositivos : ContentPage
         await Navigation.PushModalAsync(new UsuarioDetalle(_servicio));
 	}
 
-    private async void Button_SolicitarDispositivos(object sender, EventArgs e)
-    {
-        //Nueva instancia de Equipo-Empleado
-    }
-
     private async void WebServices()
     {
         equipos = await _servicio.Equipo.ObtenerEquipos();
-
-        EquiposUsadosCollectionView.ItemsSource = equipos;
-        EquiposDisponiblesCollectionView.ItemsSource = equipos;
+        EquiposUso.ItemsSource = equipos;
+        EquiposDisponibles.ItemsSource = equipos;
     }
 
+    private async void Button_Liberar_Clicked(object sender, EventArgs e)
+    {
+        //Cambiar status del equipo a "disponible" y actualizar en el backend
+        var button = sender as Button;
+        var equipo = button?.CommandParameter as EquipoDto;
 
+        if (equipo == null)
+            return;
+
+        await DisplayAlert("Equipo liberado", equipo.Nombre, "OK");
+
+        // Aquí haces lo que necesites con ese equipo
+    }
+
+    private async void Button_Apartar_Clicked(object sender, EventArgs e)
+    {
+        //Cambiar status del equipo a "apartado" y actualizar en el backend
+        await DisplayAlert("Apartado", "Equipo(s) apartado(s) correctamente", "OK");
+    }
 }

@@ -1,159 +1,185 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gerencia_Movil.Pages.Dispositivos"
+             BackgroundColor="{StaticResource BackgroundColor}"
              Title="Dispositivos">
-    <ScrollView>
-    <VerticalStackLayout Padding="50,0,50,0">
-        
-        <ImageButton 
-            Source="circulo_de_usuario.png"
-            VerticalOptions="Start" 
-            HorizontalOptions="End" 
-            HeightRequest="10"
-            WidthRequest="10"
-            Clicked="Button_UsuarioDetalle"/>
 
-        <Label 
-            Text="Dispositivos en uso por ti"
-            FontSize="18"
-            Padding="0,20,0,20"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <Grid RowDefinitions="Auto,*">
 
-        <CollectionView x:Name="EquiposUsadosCollectionView"
-                ItemsSource="{Binding Equipos}"
-                SelectionMode="None">
+        <!-- HEADER -->
+        <Grid BackgroundColor="{StaticResource PrimaryColor}"
+              Padding="20"
+              ColumnDefinitions="*,Auto">
 
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
-            </CollectionView.ItemsLayout>
+            <Label Text="Gestión de dispositivos"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <HorizontalStackLayout Padding="10" Spacing="20">
-                        <!-- Imagen del dispositivo -->
-                        <Image Source="dispositivos.png"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       HeightRequest="200"
-                       WidthRequest="200"/>
+            <ImageButton Source="circulo_de_usuario.png"
+                         HeightRequest="35"
+                         WidthRequest="35"
+                         BackgroundColor="Transparent"
+                         Clicked="Button_UsuarioDetalle"
+                         Grid.Column="1"/>
+        </Grid>
 
-                        <!-- Información del dispositivo -->
-                        <VerticalStackLayout VerticalOptions="Center" Spacing="5">
-                            <!-- Nombre del dispositivo -->
-                            <Label Text="{Binding Nombre}" 
-                           FontSize="16" 
-                           FontAttributes="Bold"
-                           VerticalOptions="Center" 
-                           HorizontalOptions="Center"/>
-                            
-                            <!-- Especificaciones -->
-                            <Label Text="{Binding EspecificacionesTecnicas}"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"/>
-                            
-                            <!-- Disponibilidad -->
-                            <Label Text="{Binding DisponibilidadId}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"/>
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="25">
 
-                            <!-- Botón de acción -->
-                            <Button Text="Liberar"
-                            VerticalOptions="End"
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=LiberarCommand}"
-                            CommandParameter="{Binding}" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                <!-- DISPOSITIVOS EN USO -->
+                <Label Text="Dispositivos en uso"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource PrimaryColor}"/>
 
-        <Label
-            Text="Dispositivos disponibles utiles para tus actividades"
-            FontSize="18"
-            Padding="0,20,0,20"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        
-        <Label
-        Text="Selecciona los dispositivos que deseas solicitar"
-        FontSize="14"
-        Padding="0,20,0,20"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
+                <CollectionView 
+                    x:Name="EquiposUso"
+                    
+                                SelectionMode="None">
 
-            <CollectionView x:Name="EquiposDisponiblesCollectionView"
-                ItemsSource="{Binding Equipos}"
-                SelectionMode="Multiple">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+                    </CollectionView.ItemsLayout>
 
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="{StaticResource CardColor}"
+                                   CornerRadius="12"
+                                   HasShadow="True"
+                                   Padding="15">
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <!-- Información del dispositivo -->
-                        <VerticalStackLayout VerticalOptions="Center" Spacing="5">
-                            <!-- Nombre del dispositivo -->
-                            <Label Text="{Binding Nombre}" 
-                                   FontSize="16" 
-                                   FontAttributes="Bold"
-                                   VerticalOptions="Center" 
-                                   HorizontalOptions="Center"/>
+                                <Grid ColumnDefinitions="80,*"
+                                      ColumnSpacing="15">
 
-                            <!-- Especificaciones -->
-                            <Label Text="{Binding EspecificacionesTecnicas}"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"/>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            
-        <Label
-        Text="Sistema de apartado"
-        FontSize="18"
-        Padding="0,20,0,20"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
+                                    <!-- Imagen -->
+                                    <Image
+                                        
+                                        Source="dispositivos.png"
+                                           HeightRequest="70"
+                                           WidthRequest="70"
+                                           Aspect="AspectFit"/>
 
-        <HorizontalStackLayout>
-        <Label 
-            Text="Hora de finalización: "
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-            <TimePicker
-            x:Name="TimePickerApartado"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"
-            Format="HH:mm"/>
-        </HorizontalStackLayout>
+                                    <!-- Información -->
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Spacing="5">
+                                        <Label Text="{Binding Nombre}" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource SecondaryColor}"/>
+                                        <Label x:Name="EquipoEspecificaciones"
+                                            Text="{Binding Especificaciones}"
+                                               FontSize="13"
+                                               TextColor="Gray"/>
 
-        <HorizontalStackLayout>
-            <CheckBox
-            x:Name="CheckBoxFullDay"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-        <Label
-            Text="Todo el día"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-        </HorizontalStackLayout>
-        
-        <HorizontalStackLayout>
-        <CheckBox
-            x:Name="CheckBoxConfirmacion"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-        <Label
-            Text="Acepto los terminos y condiciones"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-        </HorizontalStackLayout>
-        
-        <Button Text="Solicitar" Clicked="Button_SolicitarDispositivos"/>
+                                        <Label x:Name="EquipoDisponibilidad"
+                                            Text="{Binding DisponibilidadId, StringFormat='Estado: {0}'}"
+                                               FontSize="13"
+                                               TextColor="{StaticResource SecondaryColor}"/>
 
-    </VerticalStackLayout>
-    </ScrollView>
+                                        <Button Text="Liberar"
+                                                Style="{StaticResource PrimaryButton}"
+                                                HorizontalOptions="End"
+                                                Clicked="Button_Liberar_Clicked"/>
+                                    </VerticalStackLayout>
+
+                                </Grid>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+                <!-- DISPONIBLES -->
+                <Label Text="Dispositivos disponibles"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource PrimaryColor}"/>
+
+                <CollectionView 
+                    x:Name="EquiposDisponibles"
+                    ItemsSource="{Binding Equipos}"
+                                SelectionMode="Multiple">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Frame BackgroundColor="{StaticResource CardColor}"
+                                   CornerRadius="12"
+                                   HasShadow="True"
+                                   Padding="15">
+
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="{Binding Nombre}" FontAttributes="Bold" FontSize="15" TextColor="{StaticResource SecondaryColor}"/>
+                                    <Label x:Name="EquipoDispo_Especificaciones"
+                                        Text="{Binding Especificaciones}"
+                                           FontSize="13"
+                                           TextColor="Gray"/>
+
+                                </VerticalStackLayout>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+                <!-- SISTEMA DE APARTADO -->
+                <Frame BackgroundColor="{StaticResource CardColor}"
+                       CornerRadius="12"
+                       HasShadow="True"
+                       Padding="20">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Text="Sistema de apartado"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}"/>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Hora de finalización: " TextColor="{StaticResource SecondaryColor}"
+                                   VerticalOptions="Center"/>
+                            <Border Stroke="{StaticResource PrimaryColor}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="5">
+
+                                <TimePicker 
+                                Format="HH:mm"
+                                TextColor="{StaticResource PrimaryColor}"
+                                BackgroundColor="Transparent"/> 
+                            </Border>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox/>
+                            <Label Text="Todo el día" TextColor="{StaticResource SecondaryColor}"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox/>
+                            <Label Text="Acepto los términos y condiciones" TextColor="{StaticResource SecondaryColor}"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <Button Text="Solicitar dispositivos" TextColor="{StaticResource CardColor}"
+                                Style="{StaticResource PrimaryButton}"
+                                Clicked="Button_Apartar_Clicked"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
 </ContentPage>

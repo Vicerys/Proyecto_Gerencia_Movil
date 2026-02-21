@@ -1,52 +1,102 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gerencia_Movil.Pages.UsuarioDetalle"
-             Title="UsuarioDetalle">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             BackgroundColor="{StaticResource BackgroundColor}"
+             Title="Perfil">
 
-        <Button Text="Cerrar modal" Clicked="Button_Clicked"/>
+    <Grid RowDefinitions="Auto,*">
 
-        <Label 
-            Text="Información del usuario"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Image 
-            Source="circulo_de_usuario.png"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            HeightRequest="100"
-            WidthRequest="100"/>
-        <Label 
-            x:Name="LabelUsuario"
-            Text="Usuario"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />   
+        <!-- HEADER -->
+        <Grid BackgroundColor="{StaticResource PrimaryColor}"
+              Padding="25">
 
-        <Label 
-            x:Name="LabelNombreUsuario"
-            Text="Nombre"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label
-            x:Name="LabelPuesto"
-            Text="Técnico"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            x:Name="LabelUbicacion"
-            Text="Ubicación"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            <VerticalStackLayout HorizontalOptions="Center">
 
-        <Button Text="Cerrar modal" 
-            VerticalOptions="End"
-            HorizontalOptions="End"
-            Clicked="Button_Clicked"/>
+                <Image Source="circulo_de_usuario.png"
+                       HeightRequest="90"
+                       WidthRequest="90"
+                       Aspect="AspectFill"
+                       HorizontalOptions="Center"/>
 
-    </VerticalStackLayout>
+                <Label x:Name="LabelNombreUsuario"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"/>
+
+                <Label x:Name="LabelPuesto"
+                       FontSize="14"
+                       TextColor="White"
+                       Opacity="0.9"
+                       HorizontalOptions="Center"/>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- CONTENIDO -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Información general -->
+                <Frame BackgroundColor="{StaticResource CardColor}"
+                       CornerRadius="12"
+                       HasShadow="True"
+                       Padding="20">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Text="Información del usuario"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}"/>
+
+                        <Grid RowSpacing="10"
+                              ColumnDefinitions="Auto,*">
+
+                            <Label Text="Usuario:"
+                                   FontAttributes="Bold"/>
+                            <Label x:Name="LabelUsuario"
+                                   Grid.Column="1"/>
+
+                            <Label Text="Ubicación:"
+                                   FontAttributes="Bold"
+                                   Grid.Row="1"/>
+                            <Label x:Name="LabelUbicacion"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- Acciones -->
+                <Frame BackgroundColor="{StaticResource CardColor}"
+                       CornerRadius="12"
+                       HasShadow="True"
+                       Padding="20">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Text="Acciones"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}"/>
+
+                        <Button Text="Cerrar"
+                                BackgroundColor="#DC2626"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Clicked="Button_Clicked"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
 </ContentPage>

@@ -1,5 +1,6 @@
 using Gerencia_Movil.Dtos;
 using Gerencia_Movil.Services;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Gerencia_Movil.Pages;
 
@@ -19,7 +20,10 @@ public partial class Login : ContentPage
         TokenDto login;
         login = await _servicio.InicioSesion.InicioSesion(usuario, contrasena);
         
-        
+        Sesion.Token = login.token;
+        Sesion.IdEmpleado = ObtenerIdDesdeToken(login.token);
+
+
         if (login != null)
         {
             Application.Current.MainPage = new AppShell();
@@ -27,5 +31,16 @@ public partial class Login : ContentPage
         {
             DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
         }
+
     }
+
+    private int ObtenerIdDesdeToken(string token)
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var jwt = handler.ReadJwtToken(token);
+
+        var idClaim = jwt.Claims.First(c => c.Type == "EmpleadoId");
+        return int.Parse(idClaim.Value);
+    }
+
 }

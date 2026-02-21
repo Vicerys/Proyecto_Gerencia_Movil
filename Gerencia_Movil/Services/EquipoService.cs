@@ -1,4 +1,4 @@
-﻿using Gerencia_Movil.Dtos;
+﻿using Gerencia.Core.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;

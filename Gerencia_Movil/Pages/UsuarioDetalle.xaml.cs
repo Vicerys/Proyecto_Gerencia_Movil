@@ -21,27 +21,10 @@ public partial class UsuarioDetalle : ContentPage
     private async void WebServices()
     {
         EmpleadoDto empleado;
-        empleado = await _service.Empleado.ObtenerEmpleado(); //Falta pasar el id del empleado
+        empleado = await _service.Empleado.ObtenerEmpleado(Sesion.IdEmpleado);
         LabelNombreUsuario.Text = empleado.Nombre;
         LabelPuesto.Text = empleado.PuestoId.ToString();
-        LabelUbicacion.Text = empleado.Ubicacion;
+        LabelUbicacion.Text = empleado.Ubicacion; 
         LabelUsuario.Text = empleado.Usuario;
-        //string data= await ObtenerEmpleado();
-        //LabelNombreUsuario.Text = data;
-    }
-
-    /*private async Task<string> ObtenerEmpleado()
-    {
-        var client = new HttpClient();
-        var url = "http://localhost:5110/api/Empleado";
-        var request = new HttpRequestMessage(HttpMethod.Get, url);*/
-        //request.Headers.Add("accept", "*/*");
-        /*
-        var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
-        var data = await response.Content.ReadAsStringAsync();
-        Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-        return data;
-    }*/
+    } 
 }

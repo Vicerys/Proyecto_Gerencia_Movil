@@ -31,11 +31,11 @@ namespace Gerencia_Movil
                 builder.Services.AddSingleton<Servicio>();
 
             builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<Pages.Inicio>();
+            //builder.Services.AddSingleton<Pages.Inicio>();
             builder.Services.AddSingleton<Pages.Actividades>();
             builder.Services.AddSingleton<Pages.Dispositivos>();
-                builder.Services.AddSingleton<Pages.UsuarioDetalle>();
-                builder.Services.AddSingleton<Pages.ActividadDetalle>();
+            builder.Services.AddSingleton<Pages.UsuarioDetalle>();
+            builder.Services.AddSingleton<Pages.ActividadDetalle>();
             builder.Services.AddSingleton<Pages.Login>();
             return builder.Build();
         }

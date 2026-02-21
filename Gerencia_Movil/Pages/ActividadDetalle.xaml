@@ -1,41 +1,122 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gerencia_Movil.Pages.ActividadDetalle"
-             Title="ActividadDetalle">
-    <VerticalStackLayout>
-        <Label 
-            Text="Detalles de la actividad"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-        Text="Descripción"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
-        <Label 
-        Text="fecha límite "
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
-        <Label 
-        Text="Sub-tareas"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
-        <Label 
-        Text="Ubicación"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
-        <Label 
-        Text="Ubicación"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
-        <Label 
-        Text="Dispositivos necesarios"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             BackgroundColor="{StaticResource BackgroundColor}"
+             Title="Detalle de actividad">
 
-        <Button Text="Cerrar modal" 
-            VerticalOptions="End"
-            HorizontalOptions="End"
-            Clicked="Button_Clicked"/>
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+        <Grid BackgroundColor="{StaticResource PrimaryColor}"
+              Padding="20">
+
+            <Label 
+                Text="Detalles de la actividad"
+                FontSize="22"
+                FontAttributes="Bold"
+                TextColor="White"/>
+        </Grid>
+
+        <!-- CONTENIDO -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- DESCRIPCIÓN -->
+                <Frame BackgroundColor="{StaticResource CardColor}"
+                       CornerRadius="12"
+                       HasShadow="True"
+                       Padding="15">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Descripción"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               TextColor="{StaticResource PrimaryColor}"/>
+                        <Label 
+                            x:Name="LabelDescripcion"
+                            Text="{Binding Descripcion}"
+                               FontSize="14"
+                               TextColor="Black"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- INFORMACIÓN GENERAL -->
+                <Frame BackgroundColor="{StaticResource CardColor}"
+                       CornerRadius="12"
+                       HasShadow="True"
+                       Padding="15">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Información"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               TextColor="{StaticResource PrimaryColor}"/>
+
+                        <HorizontalStackLayout>
+                            <Label Text="Fecha límite:"
+                                   FontAttributes="Bold"/>
+                            <Label 
+                                x:Name="LabelFechaLimite"
+                                Text="{Binding FechaLimite}"
+                                   Margin="10,0,0,0"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <Label Text="Ubicación:"
+                                   FontAttributes="Bold"/>
+                            <Label x:Name="LabelUbicacion"
+                                Text="{Binding Ubicacion}"
+                                   Margin="10,0,0,0"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <Label Text="Dispositivos necesarios:"
+                                   FontAttributes="Bold"/>
+                            <Label 
+                                x:Name="LabelDispositivos"
+                                Text="{Binding Dispositivos}"
+                                   Margin="10,0,0,0"/>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- SUBTAREAS -->
+                <Frame BackgroundColor="{StaticResource CardColor}"
+                       CornerRadius="12"
+                       HasShadow="True"
+                       Padding="15">
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Sub-tareas"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               TextColor="{StaticResource PrimaryColor}"/>
+
+                        <CollectionView 
+                            x:Name="SubTareas"
+                            ItemsSource="{Binding SubTareas}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="• {Binding Nombre}"
+                                           FontSize="14"
+                                           Margin="5,2"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- BOTÓN -->
+                <Button Text="Cerrar"
+                        Style="{StaticResource PrimaryButton}"
+                        Clicked="Button_Clicked"
+                        HorizontalOptions="End"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
 </ContentPage>
